@@ -81,12 +81,26 @@ The `CKMapSolver` provides a total of 12+ metrics. Below is the detailed specifi
 
 ## 🛠 Installation
 
-It is recommended to install this package in **editable mode** to allow for custom modifications:
+1. Clone this repository to your local machine.
+2. Navigate to the project root directory.
+3. Install in **editable mode** to ensure the path is correctly mapped. It is recommended to install this package in **editable mode** to allow for custom modifications:
+
 
 ```bash
 git clone [https://github.com/YourUsername/ckm-sionna-rt-v1.2.1-custom.git](https://github.com/YourUsername/ckm-sionna-rt-v1.2.1-custom.git)
 cd ckm-sionna-rt-v1.2.1-custom
 pip install -e .
+```
+### ⚠️ Troubleshooting
+> [!IMPORTANT]
+> **If the `sionna.rt` import fails in a Jupyter Notebook:**
+> 1. Ensure you have executed `python -m pip install -e .` in the correct environment.
+> 2. **Restart the Jupyter Kernel** (Press `0,0` or use the 'Kernel' menu) to refresh the paths.
+
+If the `sionna.rt` import fails, please run the following command in your terminal from the project root:
+
+```bash
+python -m pip install -e .
 ```
 
 To run on CPU, [LLVM](https://llvm.org) is required. For GPU acceleration, ensure a compatible NVIDIA driver is installed.
