@@ -28,13 +28,14 @@ The `CKMapSolver` aggregates all propagation paths $i \in \{1, \dots, N\}$ in a 
 * **Time of Arrival ($\tau_{\text{ToA}}$):** The minimum flight time, reflecting the first-arrival component.  
   $$\tau_{\text{ToA}} = \min_{i} (\tau_i)$$
 
-* **RMS Delay Spread ($\sigma_{\tau}$):** $$\sigma_{\tau} = \sqrt{\frac{\sum P_i \tau_i^2}{\sum P_i} - \left( \frac{\sum P_i \tau_i}{\sum P_i} \right)^2}$$
+* **RMS Delay Spread ($\sigma_{\tau}$):** $$\sigma_{\tau} = \sqrt{\frac{\sum_{i=1}^{N} P_i \tau_i^2}{\sum_{i=1}^{N} P_i} - \left( \frac{\sum_{i=1}^{N} P_i \tau_i}{\sum_{i=1}^{N} P_i} \right)^2}$$
 
 ---
 
 ### 2. Directional Metrics (DoA & DoD)
 
-We derive the **Power-Weighted Mean Direction Vector** $\bar{\mathbf{v}} = [\bar{x}, \bar{y}, \bar{z}]^T$: 
+We derive the **Power-Weighted Mean Direction Vector** $\bar{\mathbf{v}} = [\bar{x}, \bar{y}, \bar{z}]^T$ for both arrival and departure: 
+
 $$\bar{\mathbf{v}} = \frac{\sum_{i=1}^{N} P_i \mathbf{v}_i}{\sum_{i=1}^{N} P_i}$$
 
 * **Azimuth ($\phi$):** $$\phi = \text{atan2}(\bar{y}, \bar{x})$$
@@ -43,7 +44,6 @@ $$\bar{\mathbf{v}} = \frac{\sum_{i=1}^{N} P_i \mathbf{v}_i}{\sum_{i=1}^{N} P_i}$
 
 * **Angular Spread ($\sigma_{\text{AS}}$):** Measures angular dispersion (used for DSA and DSD).  
   $$\sigma_{\text{AS}} = \sqrt{1 - \|\bar{\mathbf{v}}\|^2}$$
-
 ---
 
 ## 📋 Supported Metrics Catalog
