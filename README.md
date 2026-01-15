@@ -19,7 +19,7 @@ While the original `RadioMapSolver` focuses on energy coverage (Path Gain), our 
 
 ## 📊 Mathematical Definitions
 
-The `CKMapSolver` aggregates all propagation paths $i \in \{1, \dots, N\}$ in a spatial cell. Each path carries power $P_i$, delay $\tau_i$, arrival direction $\mathbf{v}_{a,i}$, and departure direction $\mathbf{v}_{d,i}$.
+The `CKMapSolver` aggregates all propagation paths $i \in \{1, \dots, N\}$ in a spatial cell. Each path carries power $P_i$, delay $\tau_i$, arrival direction $\mathbf{v}\_{a,i}$, and departure direction $\mathbf{v}\_{d,i}$.
 
 ### 1. Temporal Metrics
 
