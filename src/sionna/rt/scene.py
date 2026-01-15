@@ -398,6 +398,7 @@ class Scene:
         fov: float = 45.,
         paths: sionna.rt.Paths | None = None,
         radio_map: sionna.rt.PlanarRadioMap | sionna.rt.MeshRadioMap | None = None,
+        ck_map: sionna.rt.PlanarCKMap | sionna.rt.MeshCKMap | None = None,
         resolution: tuple[int, int] = (655, 500),
         rm_db_scale: bool = True,
         rm_metric : str  = "path_gain",
@@ -512,6 +513,15 @@ class Scene:
             else:
                 widget.plot_planar_radio_map(
                     radio_map, tx=rm_tx, db_scale=rm_db_scale,
+                    vmin=rm_vmin, vmax=rm_vmax, metric=rm_metric,
+                    cmap=rm_cmap)
+        if ck_map is not None:
+            if isinstance(ck_map, sionna.rt.MeshCKMap):
+                widget.plot_mesh_radio_map(ck_map, tx=rm_tx, db_scale=rm_db_scale,
+                    vmin=rm_vmin, vmax=rm_vmax, metric=rm_metric,
+                    cmap=rm_cmap)
+            else:
+                widget.plot_planar_radio_map(ck_map, tx=rm_tx, db_scale=rm_db_scale,
                     vmin=rm_vmin, vmax=rm_vmax, metric=rm_metric,
                     cmap=rm_cmap)
 
