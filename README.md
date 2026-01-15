@@ -22,21 +22,27 @@ While the original `RadioMapSolver` focuses on energy coverage (Path Gain), our 
 The `CKMapSolver` aggregates all propagation paths $i \in \{1, \dots, N\}$ in a spatial cell. Each path carries power $P_i$, delay $\tau_i$, arrival direction $\mathbf{v}_{a,i}$, and departure direction $\mathbf{v}_{d,i}$.
 
 ### 1. Temporal Metrics
-- **Path Gain ($G$):** $G = \sum_{i=1}^{N} P_i$
-- **Time of Arrival ($\tau_{ToA}$):** The minimum flight time, reflecting the first-arrival component.
-  $$\tau_{ToA} = \min_{i} (\tau_i)$$
-- **RMS Delay Spread ($\sigma_\tau$):** $$\sigma_\tau = \sqrt{\frac{\sum P_i \tau_i^2}{\sum P_i} - \left( \frac{\sum P_i \tau_i}{\sum P_i} \right)^2}$$
+
+* **Path Gain ($G$):** $$G = \sum_{i=1}^{N} P_i$$
+
+* **Time of Arrival ($\tau_{\text{ToA}}$):** The minimum flight time, reflecting the first-arrival component.  
+  $$\tau_{\text{ToA}} = \min_{i} (\tau_i)$$
+
+* **RMS Delay Spread ($\sigma_{\tau}$):** $$\sigma_{\tau} = \sqrt{\frac{\sum P_i \tau_i^2}{\sum P_i} - \left( \frac{\sum P_i \tau_i}{\sum P_i} \right)^2}$$
+
+---
 
 ### 2. Directional Metrics (DoA & DoD)
-We derive the **Power-Weighted Mean Direction Vector** $\bar{\mathbf{v}} = [\bar{x}, \bar{y}, \bar{z}]^T$:
+
+We derive the **Power-Weighted Mean Direction Vector** $\bar{\mathbf{v}} = [\bar{x}, \bar{y}, \bar{z}]^T$: 
 $$\bar{\mathbf{v}} = \frac{\sum_{i=1}^{N} P_i \mathbf{v}_i}{\sum_{i=1}^{N} P_i}$$
 
+* **Azimuth ($\phi$):** $$\phi = \text{atan2}(\bar{y}, \bar{x})$$
 
+* **Elevation ($\theta$):** $$\theta = \text{atan2}(\bar{z}, \sqrt{\bar{x}^2 + \bar{y}^2})$$
 
-- **Azimuth ($\phi$):** $\phi = \operatorname{atan2}(\bar{y}, \bar{x})$
-- **Elevation ($\theta$):** $\theta = \operatorname{atan2}(\bar{z}, \sqrt{\bar{x}^2 + \bar{y}^2})$
-- **Angular Spread ($\sigma_{AS}$):** Measures angular dispersion (used for DSA and DSD).
-  $$\sigma_{AS} = \sqrt{1 - \|\bar{\mathbf{v}}\|^2}$$
+* **Angular Spread ($\sigma_{\text{AS}}$):** Measures angular dispersion (used for DSA and DSD).  
+  $$\sigma_{\text{AS}} = \sqrt{1 - \|\bar{\mathbf{v}}\|^2}$$
 
 ---
 
